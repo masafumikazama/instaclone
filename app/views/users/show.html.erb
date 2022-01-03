@@ -1,6 +1,6 @@
 <div>
   <h3><%= @user.username %>'s profile</h3>
-       <p class="text-small"><%= link_to @user.followings.count, followings_user_path(@user) %> Following <%= link_to @user.followers.count, followers_user_path(@user) %> Followers</p>
+  <p class="text-small"><%= link_to @user.followings.count, followings_user_path(@user) %> Following <%= link_to @user.followers.count, followers_user_path(@user) %> Followers</p>
 
   <% if @user == current_user %>
     <p class="lead text-muted">You're currently signed in as <%= current_user.email %></p>
@@ -16,12 +16,10 @@
     <% end %>
   <% end %>
 
-  <% if user_signed_in? %>
-    <%= link_to "delete user", user_path(@user),method: :delete %>
-  <% end %>
   <p>
     <% if current_user&.eql? @user %>
       <%= link_to "Upload photos", new_photo_path %>
+      <%= link_to "delete user", user_path(@user),method: :delete %>
     <% end %>
   </p>
 
